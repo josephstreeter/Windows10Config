@@ -1,0 +1,236 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+# Reference: https://github.com/microsoft/winget-cli#building-the-client
+properties:
+  resources:
+    # - resource: Microsoft.Windows.Developer/DeveloperMode
+    #   directives:
+    #     description: Enable Developer Mode
+    #     allowPrerelease: false
+    #   settings:
+    #     Ensure: Present
+  
+    # - resource: Microsoft.Windows.Developer/ShowSecondsInClock
+    #   directives:
+    #     description: Enable Show Seconds In Clock
+    #     allowPrerelease: false
+    #   settings:
+    #     Ensure: Present
+    
+    # - resource: ComputerManagementDsc/PowerPlan
+    #   directives:
+    #     description: Set Power Plan to High Performance
+    #   settings:
+    #     Name: High performance
+    #     IsSingleInstance: Yes
+
+    - resource: Microsoft.Windows.Developer/EnableDarkMode
+      directives:
+        description: Enable dark mode
+        allowPrerelease: true
+      settings:
+        Ensure: present
+        RestartExplorer: true
+
+    # Install Applications
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Install-git.git
+      directives:
+        description: Install git.git
+        allowPrerelease: false
+      settings:
+        id: git.git
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Install-Microsoft.PowerShell
+      directives:
+        description: Install Microsoft.PowerShell 7
+        allowPrerelease: false
+      settings:
+        id: Microsoft.PowerShell
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Install-Microsoft.VisualStudioCode
+      directives:
+        description: Install Microsoft.VisualStudioCode
+        allowPrerelease: false
+      settings:
+        id: Microsoft.VisualStudioCode
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Install-Microsoft.Azure.StorageExplorer
+      directives:
+        description: Install Microsoft.Azure.StorageExplorer
+        allowPrerelease: false
+      settings:
+        id: Microsoft.Azure.StorageExplorer
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Install-JanDeDobbeleer.OhMyPosh
+      directives:
+        description: Install Oh My Posh
+        allowPrerelease: false
+      settings:
+        id: JanDeDobbeleer.OhMyPosh
+        source: winget
+
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage
+    #   id: Install-Visual Studio Community 2022
+    #   directives:
+    #     description: Install Visual Studio Community 2022
+    #     allowPrerelease: false
+    #   settings:
+    #     id: Microsoft.VisualStudio.2022.Community
+    #     source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Install-Microsoft SQL Server Management Studio
+      directives:
+        description: Install Microsoft SQL Server Management Studio
+        allowPrerelease: false
+      settings:
+        id: Microsoft.SQLServerManagementStudio
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Install-DSC v3
+      directives:
+        description: Install DSC v3
+        allowPrerelease: false
+      settings:
+        id: Microsoft.DSC
+        source: winget
+
+    # - resource: Microsoft.WinGet.DSC/WinGetPackage
+    #   id: Microsoft.Azure.FunctionsCoreTools
+    #   directives:
+    #     description: Install Microsoft.Azure.FunctionsCoreTools
+    #     allowPrerelease: false
+    #   settings:
+    #     id: Microsoft.Azure.FunctionsCoreTools
+    #     source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft.AzureDataStudio
+      directives:
+        description: Install Microsoft.AzureDataStudio
+        allowPrerelease: false
+      settings:
+        id: Microsoft.AzureDataStudio
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft.Bicep
+      directives:
+        description: Install Microsoft.Bicep
+        allowPrerelease: false
+      settings:
+        id: Microsoft.Bicep
+        source: winget
+
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft.AzureCLI
+      directives:
+        description: Install Microsoft.AzureCLI
+        allowPrerelease: false
+      settings:
+        id: Microsoft.AzureCLI
+        source: winget
+
+    # Install PowerShell modules
+    - resource: PowerShellModule/PSModuleResource
+      id: install-microsoft.graph
+      directives:
+        description: Install MS Graph module
+        allowPrerelease: true
+      settings:
+        Module_Name: microsoft.graph
+        Ensure: Present
+
+    - resource: PowerShellModule/PSModuleResource
+      id: install-ExchangeOnlineManagement
+      directives:
+        description: Install ExchangeOnlineManagement module
+        allowPrerelease: true
+      settings:
+        Module_Name: ExchangeOnlineManagement
+        Ensure: Present
+    
+    - resource: PowerShellModule/PSModuleResource
+      id: install-PSReadLine
+      directives:
+        description: Install PSReadLine module
+        allowPrerelease: true
+      settings:
+        Module_Name: PSReadLine
+        Ensure: Present
+        
+    - resource: PowerShellModule/PSModuleResource
+      id: install-PSScriptAnalyzer
+      directives:
+        description: Install PSScriptAnalyzer module
+        allowPrerelease: true
+      settings:
+        Module_Name: PSScriptAnalyzer
+        Ensure: Present
+    
+    # Install Visual Studio Code Extensions
+    - resource: vscode/VSCodeExtension
+      id: Install-ms-vscode.powershell
+      directives:
+        description: Install ms-vscode.powershell Extension
+        allowPrerelease: false
+        dependsOn:
+          - Microsoft.VisualStudioCode
+      settings:
+        Name: ms-vscode.powershell
+        Ensure: Present
+  
+    - resource: vscode/VSCodeExtension
+      id: Install-ms-vsliveshare.vsliveshare
+      directives:
+        description: Install ms-vsliveshare.vsliveshare Extension
+        allowPrerelease: false
+        dependsOn:
+          - Microsoft.VisualStudioCode
+      settings:
+        Name: ms-vsliveshare.vsliveshare
+        Ensure: Present
+
+    - resource: vscode/VSCodeExtension
+      id: Install-ms-vsonline.vsonline
+      directives:
+        description: Install ms-vsonline.vsonline Extension
+        allowPrerelease: false
+        dependsOn:
+          - Microsoft.VisualStudioCode
+      settings:
+        Name: ms-vsonline.vsonline
+        Ensure: Present
+
+    - resource: vscode/VSCodeExtension
+      id: Install-redhat.vscode-yaml
+      directives:
+        description: Install YAML Extension
+        allowPrerelease: false
+        dependsOn:
+          - Microsoft.VisualStudioCode
+      settings:
+        Name: redhat.vscode-yaml
+        Ensure: Present
+  
+    - resource: vscode/VSCodeExtension
+      id: Install-ms-dotnettools.vscode-dotnet-runtime
+      directives:
+        description: Install ms-dotnettools.vscode-dotnet-runtime Extension
+        allowPrerelease: false
+        dependsOn:
+          - Microsoft.VisualStudioCode
+      settings:
+        Name: ms-dotnettools.vscode-dotnet-runtime
+        Ensure: Present
+  
+  configurationVersion: 0.2.0
