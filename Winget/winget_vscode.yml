@@ -2,12 +2,12 @@
 # Reference: https://github.com/microsoft/winget-cli#building-the-client
 properties:
   resources:
-    # - resource: Microsoft.Windows.Developer/DeveloperMode
-    #   directives:
-    #     description: Enable Developer Mode
-    #     allowPrerelease: false
-    #   settings:
-    #     Ensure: Present
+    - resource: Microsoft.Windows.Developer/DeveloperMode
+      directives:
+        description: Enable Developer Mode
+        allowPrerelease: false
+      settings:
+        Ensure: Present
   
     # - resource: Microsoft.Windows.Developer/ShowSecondsInClock
     #   directives:
@@ -184,7 +184,7 @@ properties:
         description: Install ms-vscode.powershell Extension
         allowPrerelease: false
         dependsOn:
-          - Microsoft.VisualStudioCode
+          - Install-Microsoft.VisualStudioCode
       settings:
         Name: ms-vscode.powershell
         Ensure: Present

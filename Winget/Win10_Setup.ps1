@@ -1,5 +1,12 @@
 ﻿[CmdletBinding()]
-param ()
+param (
+    [string]$ConfigFile = "winget_vscode.yml",
+    [switch]$SkipPrerequisites,
+    [switch]$Force
+)
+
+# Set error action preference
+$ErrorActionPreference = 'Stop'
 
 # $progressPreference = 'silentlyContinue'
 # Write-Information "Downloading WinGet and its dependencies..."
@@ -23,28 +30,39 @@ function Install-WinGet()
 
 function Invoke-Windows10Config()
 {
-    Write-Host "Configuring Windows 10..."
-    winget configuration .\winget_vscode.yml
+    param (
+        [string]$ConfigPath
+    )
+
+    Write-Host "Configuring Windows 10 using configuration file: $ConfigPath..."
+    winget configuration $ConfigPath
 }
 
 ## End of functions ##############
 
+# Main execution block
 try
 {
-    Install-WinGet -erroraction stop
+    Write-Log "Starting Windows 10 setup script..."
+    
+    if (-not $SkipPrerequisites)
+    {
+        $configPath = Test-Prerequisites
+    }
+    else
+    {
+        $configPath = Join-Path $PSScriptRoot $ConfigFile
+    }
+    
+    Install-WinGet
+    Invoke-Windows10Config -ConfigPath $configPath
+    
+    Write-Log "Setup completed successfully!" 
+    Write-Log "Please restart your computer to ensure all changes take effect."
 }
 catch
 {
-    Write-Host "Error installing WinGet: $_"
-    Return
-}
-
-try
-{
-    Invoke-Windows10Config -erroraction stop
-}
-catch
-{
-    Write-Host "Error Configuring Windows 10: $_"
-    Return
+    Write-Log "Setup failed: $($_.Exception.Message)" -Level Error
+    Write-Log "Stack trace: $($_.ScriptStackTrace)" -Level Error
+    exit 1
 }
