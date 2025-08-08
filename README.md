@@ -27,11 +27,13 @@ Windows10Config/
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Windows 10 (version 1903+) or Windows 11
 - Administrator privileges
 - Internet connection
 
 ### Option 1: Enhanced Setup (Recommended)
+
 ```powershell
 # Run as Administrator
 cd Winget
@@ -39,6 +41,7 @@ cd Winget
 ```
 
 ### Option 2: Basic Setup
+
 ```powershell
 # Run as Administrator  
 cd Winget
@@ -48,6 +51,7 @@ cd Winget
 ## 📦 What Gets Installed
 
 ### Core Development Tools
+
 - **Git** - Version control system
 - **PowerShell 7** - Modern PowerShell experience
 - **Windows Terminal** - Modern command-line interface
@@ -56,6 +60,7 @@ cd Winget
 - **Node.js** - JavaScript runtime for web development
 
 ### Azure Development Stack
+
 - **Azure CLI** - Command-line tools for Azure
 - **Azure Storage Explorer** - GUI for Azure Storage
 - **Azure Data Studio** - Database management for Azure
@@ -63,12 +68,14 @@ cd Winget
 - **Azure PowerShell (Az module)** - Azure management from PowerShell
 
 ### Productivity & DevOps Tools
+
 - **Docker Desktop** - Containerization platform
 - **Postman** - API development and testing
 - **Oh My Posh** - PowerShell prompt customization
 - **SQL Server Management Studio** - Database management
 
 ### Visual Studio Code Extensions
+
 - **PowerShell Extension** - PowerShell development support
 - **Azure Extension Pack** - Complete Azure development toolkit
 - **GitLens** - Enhanced Git capabilities
@@ -78,6 +85,7 @@ cd Winget
 - **Live Share** - Real-time collaborative editing
 
 ### PowerShell Modules
+
 - **Az** - Azure PowerShell module
 - **Microsoft.Graph** - Microsoft Graph API access
 - **ExchangeOnlineManagement** - Exchange Online management
@@ -88,11 +96,13 @@ cd Winget
 ## 🔧 Configuration Files
 
 ### `winget_vscode.yml` (Original)
+
 - Basic development setup
 - Core tools and VS Code extensions
 - Suitable for minimal installations
 
 ### `winget_enhanced.yml` (Recommended)
+
 - Comprehensive development environment
 - Additional productivity tools
 - Enhanced VS Code extensions
@@ -102,18 +112,21 @@ cd Winget
 ## 💡 Key Features
 
 ### ✅ Reliability Improvements
+
 - **Enhanced error handling** - Comprehensive logging and error recovery
 - **Prerequisites validation** - Checks system requirements before installation
 - **Dependency management** - Proper installation order and dependency resolution
 - **Idempotent execution** - Safe to run multiple times
 
 ### ✅ Modern Development Workflow
+
 - **Container support** - Docker Desktop for containerized development
 - **API development** - Postman and REST Client for API testing
 - **Version control** - Git with GitLens for enhanced Git capabilities
 - **Cloud-native** - Complete Azure development toolkit
 
 ### ✅ Developer Experience
+
 - **Windows Terminal** - Modern command-line experience with tabs and themes
 - **Oh My Posh** - Beautiful, informative PowerShell prompts
 - **GitHub Copilot** - AI-powered code completion and suggestions
@@ -122,7 +135,9 @@ cd Winget
 ## 🛠️ Advanced Usage
 
 ### Custom Configuration
+
 Create your own configuration file based on the enhanced template:
+
 ```powershell
 # Copy and modify the enhanced configuration
 cp winget_enhanced.yml my_custom_config.yml
@@ -131,12 +146,14 @@ cp winget_enhanced.yml my_custom_config.yml
 ```
 
 ### Environment-Specific Setups
+
 - **Minimal setup**: Use `winget_vscode.yml` for basic development
 - **Full stack**: Use `winget_enhanced.yml` for comprehensive setup
 - **Azure-focused**: Uncomment Azure Functions tools in enhanced config
 - **Enterprise**: Add Visual Studio Community 2022 for large projects
 
 ### Script Parameters
+
 ```powershell
 .\Win10_Setup.ps1 [[-ConfigFile] <string>] [-SkipPrerequisites] [-Force]
 
@@ -149,14 +166,18 @@ cp winget_enhanced.yml my_custom_config.yml
 ## 🧪 Testing
 
 ### Windows Sandbox
+
 Use the provided Windows Sandbox configuration for safe testing:
+
 ```powershell
 # Open Windows Sandbox with the configuration
 .\Sandbox\sandbox.wsb
 ```
 
 ### Validation
+
 The setup script includes built-in validation:
+
 - System requirements check
 - Administrator privileges verification
 - Configuration file validation
@@ -165,13 +186,16 @@ The setup script includes built-in validation:
 ## 🔍 Troubleshooting
 
 ### Common Issues
+
 1. **WinGet not found**: The script automatically installs WinGet PowerShell module
 2. **Permission denied**: Ensure running as Administrator
 3. **Network issues**: Check internet connectivity for package downloads
 4. **Installation failures**: Check the detailed logs for specific error messages
 
 ### Logging
+
 The enhanced setup script provides comprehensive logging:
+
 - **Info**: Normal operation status
 - **Warning**: Non-critical issues
 - **Error**: Critical failures with stack traces
@@ -179,6 +203,7 @@ The enhanced setup script provides comprehensive logging:
 ## 🚦 What's Next
 
 After successful installation:
+
 1. **Restart your computer** - Some installations require a restart
 2. **Configure Git** - Set up your Git identity
 3. **Sign in to services** - Azure CLI, GitHub, etc.
@@ -195,6 +220,7 @@ After successful installation:
 ## 🤝 Contributing
 
 Feel free to submit issues and enhancement requests. When contributing:
+
 1. Test configurations in Windows Sandbox
 2. Update documentation for any changes
 3. Follow PowerShell best practices
